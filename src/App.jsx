@@ -7,16 +7,46 @@ import Horoscope from './pages/Horoscope';
 import Contact from './pages/Contact';
 
 export default function App() {
-  const [page, setPage] = useState('home');
+  const getInitialPage = () => {
+    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    if (['about', 'services', 'horoscope', 'contact'].includes(path)) {
+      return path;
+    }
+    return 'home';
+  };
+
+  const [page, setPage] = useState(getInitialPage);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState('dark');
   const [selectedBracelet, setSelectedBracelet] = useState('addiction');
+
+  // Sync state and push real URL paths for modern SPA routing and crawlers
+  const navigateTo = (newPage) => {
+    setPage(newPage);
+    const newPath = newPage === 'home' ? '/' : `/${newPage}`;
+    if (window.location.pathname !== newPath) {
+      window.history.pushState({ page: newPage }, '', newPath);
+    }
+  };
 
   // Scroll to top on page change
   useEffect(() => {
     window.scrollTo(0, 0);
     setMobileMenuOpen(false);
   }, [page]);
+
+  // Sync state with back/forward history navigation
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state && event.state.page) {
+        setPage(event.state.page);
+      } else {
+        setPage(getInitialPage());
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Handle Theme Toggle
   useEffect(() => {
@@ -30,17 +60,17 @@ export default function App() {
   const renderPage = () => {
     switch (page) {
       case 'home':
-        return <Home setPage={setPage} />;
+        return <Home setPage={navigateTo} />;
       case 'about':
         return <About />;
       case 'services':
-        return <Services setPage={setPage} setSelectedBracelet={setSelectedBracelet} />;
+        return <Services setPage={navigateTo} setSelectedBracelet={setSelectedBracelet} />;
       case 'horoscope':
         return <Horoscope />;
       case 'contact':
         return <Contact selectedBracelet={selectedBracelet} setSelectedBracelet={setSelectedBracelet} />;
       default:
-        return <Home setPage={setPage} />;
+        return <Home setPage={navigateTo} />;
     }
   };
 
@@ -48,7 +78,7 @@ export default function App() {
     <div className="cosmic-container">
       {/* Header / Navigation */}
       <header className="navbar">
-        <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); setPage('home'); }}>
+        <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); navigateTo('home'); }}>
           <Sparkles className="nav-logo-icon" size={24} />
           <span className="gold-gradient-text">BARENYAM</span>
         </a>
@@ -57,31 +87,31 @@ export default function App() {
         <nav className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
           <a 
             className={`nav-link ${page === 'home' ? 'active' : ''}`} 
-            onClick={() => setPage('home')}
+            onClick={() => navigateTo('home')}
           >
             Home
           </a>
           <a 
             className={`nav-link ${page === 'about' ? 'active' : ''}`} 
-            onClick={() => setPage('about')}
+            onClick={() => navigateTo('about')}
           >
             About
           </a>
           <a 
             className={`nav-link ${page === 'services' ? 'active' : ''}`} 
-            onClick={() => setPage('services')}
+            onClick={() => navigateTo('services')}
           >
             Bracelets Store
           </a>
           <a 
             className={`nav-link ${page === 'horoscope' ? 'active' : ''}`} 
-            onClick={() => setPage('horoscope')}
+            onClick={() => navigateTo('horoscope')}
           >
             Numerology & Transits
           </a>
           <a 
             className={`nav-link ${page === 'contact' ? 'active' : ''}`} 
-            onClick={() => setPage('contact')}
+            onClick={() => navigateTo('contact')}
           >
             Order Consultation
           </a>
@@ -181,10 +211,10 @@ export default function App() {
           <div className="footer-links" style={{ textAlign: 'left' }}>
             <h4>Explore Store</h4>
             <ul>
-              <li><a onClick={() => setPage('home')}>Home Map</a></li>
-              <li><a onClick={() => setPage('about')}>Dr. Sasmitaa's Bio</a></li>
-              <li><a onClick={() => setPage('services')}>Bracelets & Crystals</a></li>
-              <li><a onClick={() => setPage('horoscope')}>Numerology Calculator</a></li>
+              <li><a onClick={() => navigateTo('home')}>Home Map</a></li>
+              <li><a onClick={() => navigateTo('about')}>Dr. Sasmitaa's Bio</a></li>
+              <li><a onClick={() => navigateTo('services')}>Bracelets & Crystals</a></li>
+              <li><a onClick={() => navigateTo('horoscope')}>Numerology Calculator</a></li>
             </ul>
           </div>
 
@@ -192,10 +222,10 @@ export default function App() {
           <div className="footer-links" style={{ textAlign: 'left' }}>
             <h4>Crystals Shop</h4>
             <ul>
-              <li><a onClick={() => setPage('services')}>Addiction Bracelet</a></li>
-              <li><a onClick={() => setPage('services')}>Desired Love Bracelet</a></li>
-              <li><a onClick={() => setPage('services')}>Job Bracelet</a></li>
-              <li><a onClick={() => setPage('services')}>Crystal Consultation</a></li>
+              <li><a onClick={() => navigateTo('services')}>Addiction Bracelet</a></li>
+              <li><a onClick={() => navigateTo('services')}>Desired Love Bracelet</a></li>
+              <li><a onClick={() => navigateTo('services')}>Job Bracelet</a></li>
+              <li><a onClick={() => navigateTo('services')}>Crystal Consultation</a></li>
             </ul>
           </div>
         </div>
