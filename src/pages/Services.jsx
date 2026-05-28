@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Gem, Heart, ShieldAlert, Briefcase, Star, Clock, CheckCircle } from 'lucide-react';
 
-export default function Services({ setPage, setSelectedBracelet }) {
+export default function Services({ setPage, setSelectedBracelet, addToCart }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const bracelets = [
@@ -104,6 +104,40 @@ export default function Services({ setPage, setSelectedBracelet }) {
         <p className="section-subtitle">Natural energized gemstones assembled under geocentric transit Muhurtas.</p>
       </section>
 
+      {/* GemsMantra-Inspired Premium Trust Bar */}
+      <section className="container" style={{ paddingTop: '0', paddingBottom: '2rem' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '1rem',
+          padding: '1.25rem',
+          textAlign: 'center',
+          borderColor: 'rgba(var(--accent-gold-rgb), 0.2)',
+          background: 'rgba(var(--accent-gold-rgb), 0.02)'
+        }} className="form-row">
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>🛡️</span>
+            <h4 style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', margin: 0, fontWeight: 600 }}>100% Natural Minerals</h4>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Certified Untreated Gems</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>🔬</span>
+            <h4 style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', margin: 0, fontWeight: 600 }}>Govt. Lab Certified</h4>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Verifiable Authenticity Cards</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>🌊</span>
+            <h4 style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', margin: 0, fontWeight: 600 }}>Pancha-Amrita Purified</h4>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Ganga Water & Ghee Cleansed</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>🕉️</span>
+            <h4 style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', margin: 0, fontWeight: 600 }}>Prana-Pratishtha Puja</h4>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Attuned to Your Nakshatra</p>
+          </div>
+        </div>
+      </section>
+
       {/* Bracelets Products Grid (3-column compact layout) */}
       <section className="container" style={{ paddingTop: '0' }}>
         <div className="bracelet-grid">
@@ -191,11 +225,15 @@ export default function Services({ setPage, setSelectedBracelet }) {
                     style={{ width: '100%', padding: '0.5rem', fontSize: '0.8rem', height: '36px' }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedBracelet(item.id);
-                      setPage('contact');
+                      addToCart({
+                        id: item.id,
+                        title: item.title,
+                        price: item.price,
+                        img: item.img
+                      });
                     }}
                   >
-                    Order via Form
+                    Add to Attunement Cart 💎
                   </button>
                   <a 
                     href={`https://wa.me/919575153312?text=Hello%20Dr.%20Sasmitaa,%20I%20want%20to%20order%20the%20energized%20${encodeURIComponent(item.title)}%20(Price:%20${encodeURIComponent(item.price)})%20from%20Barenyam.%20Please%20guide%20me%20on%20the%20shipping!`}
@@ -205,7 +243,7 @@ export default function Services({ setPage, setSelectedBracelet }) {
                     style={{ width: '100%', padding: '0.5rem 0', fontSize: '0.8rem', height: '36px', display: 'inline-flex', gap: '0.25rem', justifyContent: 'center', alignItems: 'center', borderColor: '#22c55e', color: '#22c55e', background: 'rgba(34, 197, 94, 0.04)', textDecoration: 'none' }}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.005 5.291 5.3 0 11.799 0c3.148.001 6.11 1.23 8.339 3.462 2.228 2.232 3.454 5.2 3.453 8.351-.004 6.507-5.3 11.798-11.799 11.798-2.002-.001-3.973-.51-5.713-1.48L0 24zm6.59-4.846c1.62.962 3.238 1.48 4.966 1.482 5.31 0 9.638-4.307 9.641-9.618.002-2.573-1-4.996-2.822-6.817C16.55 2.378 14.135 1.38 11.799 1.38c-5.314 0-9.643 4.307-9.646 9.619-.001 1.848.497 3.593 1.439 5.234l-.946 3.456 3.523-.935zm11.777-6.311c-.328-.164-1.942-.958-2.242-1.069-.301-.11-.52-.164-.738.164-.219.328-.848 1.069-1.039 1.288-.19.219-.382.246-.71.082-.328-.164-1.385-.511-2.637-1.63-1.025-.918-1.714-2.05-1.916-2.395-.2-.344-.022-.53.142-.693.148-.147.328-.382.492-.574.164-.19.219-.328.328-.547.11-.219.055-.411-.027-.574-.082-.164-.738-1.78-1.011-2.436-.266-.641-.531-.555-.738-.566-.19-.01-.41-.01-.629-.01s-.574.082-.875.411c-.301.328-1.148 1.123-1.148 2.739 0 1.616 1.176 3.178 1.341 3.397.164.219 2.312 3.53 5.598 4.95 2.736 1.183 3.308.948 3.91.89.602-.058 1.941-.795 2.215-1.56.274-.767.274-1.425.192-1.56-.083-.137-.302-.219-.629-.383z"/></svg> WhatsApp Order
+                    Order via WhatsApp 💬
                   </a>
                   <button 
                     className="btn btn-outline"
@@ -215,10 +253,10 @@ export default function Services({ setPage, setSelectedBracelet }) {
                       setSelectedProduct(selectedProduct === item.id ? null : item.id);
                     }}
                   >
-                    {selectedProduct === item.id ? 'Hide Stone Breakdown' : 'Show Stone Breakdown'}
+                    {selectedProduct === item.id ? 'Hide Details Accordion' : 'Show Details Accordion'}
                   </button>
                 </div>
-              </div>
+            </div>
             </div>
           ))}
         </div>

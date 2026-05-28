@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Moon, Gem, Star, ArrowRight, Phone } from 'lucide-react';
 
-export default function Home({ setPage }) {
+export default function Home({ setPage, addToCart }) {
   const [birthMonth, setBirthMonth] = useState('1');
   const [birthDay, setBirthDay] = useState(1);
   const [calcResult, setCalcResult] = useState(null);
@@ -354,11 +354,30 @@ export default function Home({ setPage }) {
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.4, marginBottom: '1rem', textAlign: 'left' }}>
                 Formulated with Kunzite, Amethyst, Lepidolite, and Iolite to help calm the nervous system and alleviate addictive cravings.
               </p>
-              <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--accent-gold)' }}>₹2,100</span>
-                <button className="btn btn-gold" style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem', height: '32px' }} onClick={() => setPage('services')}>
-                  Shop Now
-                </button>
+              <div style={{ marginTop: 'auto', display: 'flex', gap: '0.5rem', flexDirection: 'column', width: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                  <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--accent-gold)' }}>₹2,100</span>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Lab Certified</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '0.4rem', width: '100%' }}>
+                  <button 
+                    className="btn btn-gold" 
+                    style={{ padding: '0', fontSize: '0.75rem', height: '34px' }} 
+                    onClick={() => {
+                      addToCart({
+                        id: 'addiction',
+                        title: 'Addiction Bracelet',
+                        price: '₹2,100',
+                        img: '/bracelet_addiction.png'
+                      });
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button className="btn btn-outline" style={{ padding: '0', fontSize: '0.75rem', height: '34px' }} onClick={() => setPage('services')}>
+                    Details
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -378,11 +397,30 @@ export default function Home({ setPage }) {
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.4, marginBottom: '1rem', textAlign: 'left' }}>
                 Infused with Rhodochrosite, Moon Stone, Pink Tourmaline, and Rhodonite to remove blockages and attract romance.
               </p>
-              <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--accent-gold)' }}>₹2,400</span>
-                <button className="btn btn-gold" style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem', height: '32px' }} onClick={() => setPage('services')}>
-                  Shop Now
-                </button>
+              <div style={{ marginTop: 'auto', display: 'flex', gap: '0.5rem', flexDirection: 'column', width: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                  <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--accent-gold)' }}>₹2,400</span>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Lab Certified</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '0.4rem', width: '100%' }}>
+                  <button 
+                    className="btn btn-gold" 
+                    style={{ padding: '0', fontSize: '0.75rem', height: '34px' }} 
+                    onClick={() => {
+                      addToCart({
+                        id: 'love',
+                        title: 'Desired Love Bracelet',
+                        price: '₹2,400',
+                        img: '/bracelet_love.png'
+                      });
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button className="btn btn-outline" style={{ padding: '0', fontSize: '0.75rem', height: '34px' }} onClick={() => setPage('services')}>
+                    Details
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -402,11 +440,30 @@ export default function Home({ setPage }) {
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.4, marginBottom: '1rem', textAlign: 'left' }}>
                 A combination of Turquoise, Garnet, Amethyst, Citrine, and Green Aventurine to attract career growth.
               </p>
-              <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--accent-gold)' }}>₹2,200</span>
-                <button className="btn btn-gold" style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem', height: '32px' }} onClick={() => setPage('services')}>
-                  Shop Now
-                </button>
+              <div style={{ marginTop: 'auto', display: 'flex', gap: '0.5rem', flexDirection: 'column', width: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                  <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--accent-gold)' }}>₹2,200</span>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Lab Certified</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '0.4rem', width: '100%' }}>
+                  <button 
+                    className="btn btn-gold" 
+                    style={{ padding: '0', fontSize: '0.75rem', height: '34px' }} 
+                    onClick={() => {
+                      addToCart({
+                        id: 'job',
+                        title: 'Job Bracelet',
+                        price: '₹2,200',
+                        img: '/bracelet_job.png'
+                      });
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button className="btn btn-outline" style={{ padding: '0', fontSize: '0.75rem', height: '34px' }} onClick={() => setPage('services')}>
+                    Details
+                  </button>
+                </div>
               </div>
             </div>
           </div>
