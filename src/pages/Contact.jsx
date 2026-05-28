@@ -98,7 +98,7 @@ export default function Contact({ selectedBracelet, setSelectedBracelet }) {
       {/* Contact Header */}
       <section className="container" style={{ padding: '5rem 1.5rem 2rem', textAlign: 'center' }}>
         <span style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 600 }}>Initiate Custom Puja</span>
-        <h2 className="section-title">Order Your Energized Remedy</h2>
+        <h1 className="section-title gold-gradient-text" style={{ fontSize: '2.2rem', marginBottom: '0.5rem', fontFamily: 'var(--font-serif)' }}>Contact Dr. Sasmita Dash | Order Energized Crystals</h1>
         <p className="section-subtitle">Provide your contact details and birth parameters. Dr. Sasmitaa Dash will cleanse and program your healing crystals.</p>
       </section>
 

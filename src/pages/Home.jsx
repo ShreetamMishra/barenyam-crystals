@@ -124,19 +124,23 @@ export default function Home({ setPage }) {
           <h1 className="hero-title gold-gradient-text" style={{
             lineHeight: 1.1,
             fontWeight: 800,
-            marginBottom: '1rem',
+            marginBottom: '1.25rem',
             fontFamily: 'var(--font-serif)'
           }}>
-            Barenyam Crystals & Astrology
+            Dr. Sasmita Dash Astrologer
+            <span style={{ display: 'block', fontSize: '0.5em', marginTop: '0.5rem', fontWeight: 600, fontFamily: 'var(--font-sans)', letterSpacing: '2px', textTransform: 'uppercase' }} className="purple-gradient-text">
+              Barenyam Crystals & Oriya Numerology
+            </span>
           </h1>
           
           <p className="floating-element hero-subtitle" style={{
             fontFamily: 'var(--font-serif)',
             color: 'var(--text-primary)',
             marginBottom: '1.5rem',
-            letterSpacing: '0.5px'
+            letterSpacing: '0.5px',
+            fontSize: '1.2rem'
           }}>
-            Vedic Remedies & Healing Crystals by Dr. Sasmitaa Dash
+            Vedic Remedies & Healing Crystal Bracelets by Dr. Sasmitaa Dash (Dr. Sasmita Dash)
           </p>
           
           <p style={{

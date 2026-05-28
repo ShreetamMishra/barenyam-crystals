@@ -100,7 +100,7 @@ export default function Services({ setPage, setSelectedBracelet }) {
       {/* Page Header */}
       <section className="container" style={{ padding: '3rem 1.5rem 1.5rem', textAlign: 'center' }}>
         <span style={{ fontSize: '0.85rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 600 }}>Barenyam Store</span>
-        <h2 className="section-title">Healing Crystal Bracelets</h2>
+        <h1 className="section-title gold-gradient-text" style={{ fontSize: '2.2rem', marginBottom: '0.5rem', fontFamily: 'var(--font-serif)' }}>Dr. Sasmita Dash Energized Healing Crystal Bracelets</h1>
         <p className="section-subtitle">Natural energized gemstones assembled under geocentric transit Muhurtas.</p>
       </section>
 

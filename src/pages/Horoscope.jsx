@@ -163,7 +163,7 @@ export default function Horoscope() {
       {/* Page Title */}
       <section className="container" style={{ padding: '5rem 1.5rem 2rem', textAlign: 'center' }}>
         <span style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 600 }}>Mystical Calculations</span>
-        <h2 className="section-title">Numerology & Ephemeris</h2>
+        <h1 className="section-title gold-gradient-text" style={{ fontSize: '2.2rem', marginBottom: '0.5rem', fontFamily: 'var(--font-serif)' }}>Dr. Sasmita Dash Numerology Calculator & planetary transits</h1>
         <p className="section-subtitle">Real-time geocentric planetary positions alongside our interactive Life Path number calculator.</p>
       </section>
 

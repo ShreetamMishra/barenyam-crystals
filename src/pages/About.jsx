@@ -95,7 +95,9 @@ export default function About() {
               display: 'inline-block',
               marginBottom: '0.5rem'
             }}>Meet the Expert</span>
-            <h2 className="about-title" style={{ marginBottom: '1.5rem', lineHeight: 1.2 }}>Dr. Sasmitaa Dash</h2>
+            <h1 className="about-title gold-gradient-text" style={{ marginBottom: '1.5rem', lineHeight: 1.2, fontFamily: 'var(--font-serif)', fontSize: '2.3rem' }}>
+              Dr. Sasmita Dash (Dr. Sasmitaa Dash) | Astrologer & Numerologist
+            </h1>
             
             <p style={{ fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '1.25rem', lineHeight: 1.7 }}>
               My journey began in the timeless traditions of classical Vedic Jyotish and Numerology. I observed that while planetary coordinate transits reveal the karmic waves of our destiny, we require high-vibrational energetic anchors to sail these currents successfully. This led me to merge Vedic astrology with the subtle vibrational science of natural crystals.
