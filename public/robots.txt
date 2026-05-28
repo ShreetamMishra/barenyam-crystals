@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Host & Sitemap link
+Host: https://drsasmitaadash.vercel.app/
+Sitemap: https://drsasmitaadash.vercel.app/sitemap.xml
